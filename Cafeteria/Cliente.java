@@ -27,7 +27,7 @@ public class Cliente {
     }
 
     public void contactar() {
-        System.out.println("Enviando correo a " + correo);
+        System.out.println("Contactando a " + nombre + " por correo: " + correo + " o teléfono: " + telefono);
     }
 
     public int contarPedidos() {
@@ -41,4 +41,7 @@ public class Cliente {
     public String getNombre() {
         return nombre;
     }
+
+    // getter para telefono si se necesita en otro lado
+    public String getTelefono() { return telefono; }
 }

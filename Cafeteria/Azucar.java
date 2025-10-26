@@ -12,6 +12,12 @@ public class Azucar extends BebidaDecorador {
         this.organica = false;
     }
 
+    // Getters / setters
+    public int getCucharadas() { return cucharadas; }
+    public String getTipoAzucar() { return tipoAzucar; }
+    public boolean isDisuelta() { return disuelta; }
+    public boolean isOrganica() { return organica; }
+
     public void endulzar() {
         disuelta = true;
         System.out.println("Endulzando con " + cucharadas + " cucharada(s) de " + tipoAzucar);
@@ -29,6 +35,24 @@ public class Azucar extends BebidaDecorador {
 
     public void ajustarCantidad(int nueva) {
         this.cucharadas = Math.max(0, nueva);
+        this.costoExtra = 0.20 * this.cucharadas; // actualizar costo también
         System.out.println("Cucharadas ajustadas a: " + nueva);
+    }
+
+    @Override
+    public String getDescripcion() {
+        String org = organica ? " orgánica" : "";
+        return bebida.getDescripcion() + " + Azúcar(" + cucharadas + ")" + org;
+    }
+
+    @Override
+    public void preparar() {
+        super.preparar();
+        if (!disuelta) {
+            System.out.println("Disolviendo azúcar (" + cucharadas + " cucharada(s))...");
+            disuelta = true;
+        } else {
+            System.out.println("Azúcar ya disuelta.");
+        }
     }
 }

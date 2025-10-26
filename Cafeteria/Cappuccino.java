@@ -12,6 +12,12 @@ public class Cappuccino extends CafeBase {
         this.tipoLeche = "Entera";
     }
 
+    // Getters / setters
+    public double getEspumaCantidad() { return espumaCantidad; }
+    public boolean hasCanela() { return canela; }
+    public boolean hasCacao() { return cacao; }
+    public String getTipoLeche() { return tipoLeche; }
+
     public void agregarCanela() {
         this.canela = true;
         System.out.println("Se agregó canela al cappuccino.");
@@ -28,7 +34,17 @@ public class Cappuccino extends CafeBase {
     }
 
     @Override
+    public String getDescripcion() {
+        String extras = "";
+        if (canela) extras += " + Canela";
+        if (cacao) extras += " + Cacao";
+        return super.getDescripcion() + extras + " - Leche: " + tipoLeche + " - Espuma: " + espumaCantidad + "ml";
+    }
+
+    @Override
     public void preparar() {
-        System.out.println("Preparando cappuccino con espuma de " + tipoLeche);
+        System.out.println("Preparando cappuccino con " + espumaCantidad + "ml de espuma y leche " + tipoLeche);
+        if (canela) System.out.println("Se añadirá canela.");
+        if (cacao) System.out.println("Se añadirá cacao.");
     }
 }

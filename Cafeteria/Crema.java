@@ -12,6 +12,12 @@ public class Crema extends BebidaDecorador {
         this.costo = 1.00;
     }
 
+    // Getters / setters
+    public double getVolumen() { return volumen; }
+    public boolean isBatida() { return batida; }
+    public String getSabor() { return sabor; }
+    public double getCostoExtra() { return costo; }
+
     public void batir() {
         this.batida = true;
         System.out.println("Crema batida");
@@ -28,8 +34,18 @@ public class Crema extends BebidaDecorador {
     }
 
     @Override
+    public String getDescripcion() {
+        return bebida.getDescripcion() + " + Crema(" + sabor + ", " + volumen + "ml)";
+    }
+
+    @Override
     public void preparar() {
         super.preparar();
-        System.out.println("Agregando crema sabor " + sabor);
+        if (!batida) {
+            System.out.println("Batir crema (" + volumen + "ml) sabor " + sabor + "...");
+            batida = true;
+        } else {
+            System.out.println("Crema ya batida.");
+        }
     }
 }

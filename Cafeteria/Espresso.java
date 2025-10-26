@@ -12,6 +12,12 @@ public class Espresso extends CafeBase {
         this.molidoFino = true;
     }
 
+    // Getters / setters (útiles y evitan warnings)
+    public boolean isDobleCarga() { return dobleCarga; }
+    public String getOrigen() { return origen; }
+    public int getSegundosExtraccion() { return segundosExtraccion; }
+    public boolean isMolidoFino() { return molidoFino; }
+
     public void servir() {
         System.out.println("Sirviendo un espresso con aroma intenso.");
     }
@@ -27,7 +33,14 @@ public class Espresso extends CafeBase {
     }
 
     @Override
+    public String getDescripcion() {
+        String extras = (dobleCarga ? " [Doble carga]" : "");
+        String grind = molidoFino ? "molido fino" : "molido grueso";
+        return super.getDescripcion() + extras + " - Origen: " + origen + " (" + grind + ")";
+    }
+
+    @Override
     public void preparar() {
-        System.out.println("Extrayendo espresso (" + segundosExtraccion + "s)...");
+        System.out.println("Extrayendo espresso de " + origen + " (" + segundosExtraccion + "s) - " + (molidoFino ? "molido fino" : "molido grueso"));
     }
 }

@@ -5,7 +5,7 @@ public class PedidoCafe {
     private String id;
     private List<Bebida> bebidas;
     private String fecha;
-    private String metodoPago;
+    private String metodoPago; // antes no usado
 
     public PedidoCafe(String id, String fecha, String metodoPago) {
         this.id = id;
@@ -28,10 +28,14 @@ public class PedidoCafe {
         for (Bebida b : bebidas) {
             System.out.println("- " + b.getDescripcion() + " -> $" + String.format("%.2f", b.getCosto()));
         }
+        // Mostrar info del método de pago (uso explícito)
+        System.out.println("Método de pago: " + (metodoPago != null && !metodoPago.isEmpty() ? metodoPago : "No especificado"));
     }
 
     public String getResumen() {
-        return "Pedido " + id + " (" + fecha + ") Total: $" + String.format("%.2f", calcularTotal());
+        // Incluir método de pago en el resumen para mostrar uso del atributo
+        return "Pedido " + id + " (" + fecha + ") - Método pago: " + (metodoPago != null && !metodoPago.isEmpty() ? metodoPago : "No especificado")
+                + " - Total: $" + String.format("%.2f", calcularTotal());
     }
 
     public List<Bebida> getBebidas() {
@@ -41,4 +45,8 @@ public class PedidoCafe {
     public String getId() {
         return id;
     }
+
+    // Getter y setter para el metodoPago (por si lo quieres cambiar después)
+    public String getMetodoPago() { return metodoPago; }
+    public void setMetodoPago(String metodoPago) { this.metodoPago = metodoPago; }
 }

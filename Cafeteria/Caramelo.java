@@ -12,6 +12,12 @@ public class Caramelo extends BebidaDecorador {
         this.costo = 1.20;
     }
 
+    // Getters / setters
+    public String getTipo() { return tipo; }
+    public double getDensidad() { return densidad; }
+    public boolean isJarabe() { return jarabe; }
+    public double getCostoExtra() { return costo; }
+
     public void calentar() {
         System.out.println("Calentando caramelo...");
     }
@@ -26,8 +32,13 @@ public class Caramelo extends BebidaDecorador {
     }
 
     @Override
+    public String getDescripcion() {
+        return bebida.getDescripcion() + " + Caramelo(" + tipo + ", densidad " + densidad + ")";
+    }
+
+    @Override
     public void preparar() {
         super.preparar();
-        System.out.println("Aplicando caramelo tipo " + tipo);
+        System.out.println("Aplicando caramelo tipo " + tipo + " (jarabe: " + jarabe + ")...");
     }
 }

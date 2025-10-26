@@ -12,6 +12,12 @@ public class Chocolate extends BebidaDecorador {
         this.amargo = true;
     }
 
+    // Getters / setters
+    public String getTipo() { return tipo; }
+    public double getPorcentajeCacao() { return porcentajeCacao; }
+    public boolean isDerretido() { return derretido; }
+    public boolean isAmargo() { return amargo; }
+
     public void derretir() {
         derretido = true;
         System.out.println("Derretiendo chocolate tipo: " + tipo);
@@ -28,8 +34,18 @@ public class Chocolate extends BebidaDecorador {
     }
 
     @Override
+    public String getDescripcion() {
+        return bebida.getDescripcion() + " + Chocolate(" + tipo + ", " + porcentajeCacao + "% cacao" + (amargo ? ", amargo" : ", dulce") + ")";
+    }
+
+    @Override
     public void preparar() {
         super.preparar();
-        System.out.println("Agregando chocolate tipo " + tipo);
+        if (!derretido) {
+            System.out.println("Derritiéndose " + tipo + " (" + porcentajeCacao + "%)...");
+            derretido = true;
+        } else {
+            System.out.println("Chocolate ya derretido.");
+        }
     }
 }
