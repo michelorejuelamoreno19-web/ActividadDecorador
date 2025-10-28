@@ -1,44 +1,21 @@
+// Subclase concreta que representa un café Latte
 public class Latte extends CafeBase {
-    private double cantidadLeche;
-    private boolean espumaLigera;
-    private String tipoSabor;
-    private boolean decoracionArte;
+    private String tipoLeche;
+    private int espumaLigera;
+    private boolean arte;
 
-    public Latte() {
-        super("Latte", 2.80, "Grande", 4);
-        this.cantidadLeche = 200;
-        this.espumaLigera = true;
-        this.tipoSabor = "Vainilla";
-        this.decoracionArte = true;
-    }
-
-    // Getters / setters
-    public double getCantidadLeche() { return cantidadLeche; }
-    public boolean hasEspumaLigera() { return espumaLigera; }
-    public String getTipoSabor() { return tipoSabor; }
-    public boolean hasDecoracionArte() { return decoracionArte; }
-
-    public void cambiarSabor(String sabor) {
-        this.tipoSabor = sabor;
-        System.out.println("Sabor del latte cambiado a: " + sabor);
-    }
-
-    public void agregarDecoracion() {
-        this.decoracionArte = true;
-        System.out.println("Se agregó decoración al latte.");
-    }
-
-    public void calentarLeche() {
-        System.out.println("Calentando " + cantidadLeche + "ml de leche para el latte.");
-    }
-
-    @Override
-    public String getDescripcion() {
-        return super.getDescripcion() + " - Sabor: " + tipoSabor + (decoracionArte ? " + Arte latte" : "") ;
+    public Latte(String tipoLeche, int espumaLigera, boolean arte) {
+        super("Latte", 4300, "Suave");
+        this.tipoLeche = tipoLeche;
+        this.espumaLigera = espumaLigera;
+        this.arte = arte;
     }
 
     @Override
     public void preparar() {
-        System.out.println("Preparando latte sabor " + tipoSabor + " con " + cantidadLeche + "ml de leche.");
+        System.out.println("Preparando latte con leche " + tipoLeche + " y espuma ligera de " + espumaLigera + "ml");
+        if (arte) {
+            System.out.println("Creando arte latte ☕🎨");
+        }
     }
 }

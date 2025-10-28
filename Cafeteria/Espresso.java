@@ -1,46 +1,20 @@
+// Subclase concreta que representa un tipo de café específico
 public class Espresso extends CafeBase {
-    private boolean dobleCarga;
     private String origen;
-    private int segundosExtraccion;
-    private boolean molidoFino;
+    private String intensidad;
 
-    public Espresso() {
-        super("Espresso", 1.80, "Pequeño", 7);
-        this.dobleCarga = false;
-        this.origen = "Colombia";
-        this.segundosExtraccion = 25;
-        this.molidoFino = true;
-    }
-
-    // Getters / setters (útiles y evitan warnings)
-    public boolean isDobleCarga() { return dobleCarga; }
-    public String getOrigen() { return origen; }
-    public int getSegundosExtraccion() { return segundosExtraccion; }
-    public boolean isMolidoFino() { return molidoFino; }
-
-    public void servir() {
-        System.out.println("Sirviendo un espresso con aroma intenso.");
-    }
-
-    public void configurarExtraccion(int segundos) {
-        this.segundosExtraccion = segundos;
-        System.out.println("Extracción configurada a " + segundos + "s");
-    }
-
-    public void activarDobleCarga() {
-        this.dobleCarga = true;
-        System.out.println("Doble carga activada");
-    }
-
-    @Override
-    public String getDescripcion() {
-        String extras = (dobleCarga ? " [Doble carga]" : "");
-        String grind = molidoFino ? "molido fino" : "molido grueso";
-        return super.getDescripcion() + extras + " - Origen: " + origen + " (" + grind + ")";
+    public Espresso(String origen, String intensidad) {
+        super("Espresso", 4000, "Fuerte");
+        this.origen = origen;
+        this.intensidad = intensidad;
     }
 
     @Override
     public void preparar() {
-        System.out.println("Extrayendo espresso de " + origen + " (" + segundosExtraccion + "s) - " + (molidoFino ? "molido fino" : "molido grueso"));
+        System.out.println("Preparando espresso con granos de " + origen + " e intensidad " + intensidad);
+    }
+
+    public void activarDobleCarga() {
+        System.out.println("Se ha activado la doble carga del espresso ☕💪");
     }
 }
