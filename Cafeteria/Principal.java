@@ -1,4 +1,4 @@
-public class MainCafeteria {
+public class Principal {
     public static void main(String[] args) {
 
         // Cliente 1
