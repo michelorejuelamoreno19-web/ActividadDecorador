@@ -1,20 +1,22 @@
-// Subclase concreta que representa un tipo de café específico
 public class Espresso extends CafeBase {
     private String origen;
     private String intensidad;
+    private String metodoTostado;
 
-    public Espresso(String origen, String intensidad) {
-        super("Espresso", 4000, "Fuerte");
-        this.origen = origen;
-        this.intensidad = intensidad;
+    public Espresso(String tamano, String nivelTostado) {
+        super("Espresso", 2500.0, tamano, nivelTostado);
+        this.origen = "Colombia";
+        this.intensidad = "Alta";
+        this.metodoTostado = "Oscuro";
     }
 
     @Override
     public void preparar() {
-        System.out.println("Preparando espresso con granos de " + origen + " e intensidad " + intensidad);
+        System.out.println("Preparando Espresso (" + metodoTostado + ") de " + origen);
     }
 
     public void activarDobleCarga() {
-        System.out.println("Se ha activado la doble carga del espresso ☕💪");
+        this.precioBase += 800;
+        System.out.println("Activada doble carga de espresso.");
     }
 }

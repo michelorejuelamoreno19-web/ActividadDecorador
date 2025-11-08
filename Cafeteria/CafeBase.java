@@ -1,22 +1,32 @@
-// Clase base abstracta para los diferentes tipos de café
-public abstract class CafeBase implements Bebida {
+public abstract class CafeBase implements Producto {
     protected String nombre;
     protected double precioBase;
+    protected String tamano;
     protected String nivelTostado;
 
-    public CafeBase(String nombre, double precioBase, String nivelTostado) {
+    public CafeBase(String nombre, double precioBase, String tamano, String nivelTostado) {
         this.nombre = nombre;
         this.precioBase = precioBase;
+        this.tamano = tamano;
         this.nivelTostado = nivelTostado;
     }
 
-    public String getDescripcion() {
-        return nombre + " (Tostado: " + nivelTostado + ")";
+    @Override
+    public String nombre() {
+        return nombre + " (" + tamano + ", tostado: " + nivelTostado + ")";
     }
 
-    public double getCosto() {
+    @Override
+    public double precio() {
         return precioBase;
     }
 
-    public abstract void preparar();
+    @Override
+    public void preparar() {
+        System.out.println("Preparando " + nombre() + " base.");
+    }
+
+    public void servir() {
+        System.out.println("Sirviendo " + nombre());
+    }
 }

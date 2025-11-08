@@ -1,17 +1,17 @@
-// Decorador concreto que añade chocolate al café
 public class Chocolate extends DecoradorAdicional {
-    private int porcentajeCacao;
-    private boolean amargo;
+    private double porcentajeCacao;
 
-    public Chocolate(Bebida bebida, int porcentajeCacao, boolean amargo) {
-        super(bebida, "Chocolate", 1000);
-        this.porcentajeCacao = porcentajeCacao;
-        this.amargo = amargo;
+    public Chocolate(Producto bebida) {
+        super(bebida, 1000.0, "Chocolate");
+        this.porcentajeCacao = 70.0;
     }
 
     @Override
     public void preparar() {
-        bebida.preparar();
-        System.out.println("Añadiendo chocolate " + porcentajeCacao + "% cacao " + (amargo ? "amargo 🍫" : "dulce 🍩"));
+        super.preparar();
+        System.out.println("Rallando chocolate (" + porcentajeCacao + "% cacao).");
+    }
+     public void servir() {
+        System.out.println("Sirviendo " + nombre());
     }
 }

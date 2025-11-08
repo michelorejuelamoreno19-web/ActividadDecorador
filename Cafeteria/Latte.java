@@ -1,21 +1,17 @@
-// Subclase concreta que representa un café Latte
 public class Latte extends CafeBase {
-    private String tipoLeche;
-    private int espumaLigera;
-    private boolean arte;
+    private int cantidadLeche;
+    private String tipoSabor;
+    private boolean espumaLigera;
 
-    public Latte(String tipoLeche, int espumaLigera, boolean arte) {
-        super("Latte", 4300, "Suave");
-        this.tipoLeche = tipoLeche;
-        this.espumaLigera = espumaLigera;
-        this.arte = arte;
+    public Latte(String tamano, String nivelTostado) {
+        super("Latte", 3000.0, tamano, nivelTostado);
+        this.cantidadLeche = 150;
+        this.tipoSabor = "Vainilla";
+        this.espumaLigera = true;
     }
 
     @Override
     public void preparar() {
-        System.out.println("Preparando latte con leche " + tipoLeche + " y espuma ligera de " + espumaLigera + "ml");
-        if (arte) {
-            System.out.println("Creando arte latte ☕🎨");
-        }
+        System.out.println("Preparando Latte con " + cantidadLeche + "ml de leche y sabor " + tipoSabor);
     }
 }

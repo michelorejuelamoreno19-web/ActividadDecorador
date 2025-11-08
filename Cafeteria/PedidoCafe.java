@@ -1,35 +1,34 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-// Clase que representa un pedido de café con múltiples bebidas
 public class PedidoCafe {
-    private String idPedido;
+    private int idPedido;
+    private Date fecha;
     private String metodoPago;
-    private List<Bebida> bebidas;
+    private List<Producto> bebidas = new ArrayList<>();
 
-    public PedidoCafe(String idPedido, String metodoPago) {
+    public PedidoCafe(int idPedido, String metodoPago) {
         this.idPedido = idPedido;
+        this.fecha = new Date();
         this.metodoPago = metodoPago;
-        this.bebidas = new ArrayList<>();
     }
 
-    public void agregarBebida(Bebida b) {
-        bebidas.add(b);
+    public void agregarBebida(Producto bebida) {
+        bebidas.add(bebida);
     }
 
     public double calcularTotal() {
-        double total = 0;
-        for (Bebida b : bebidas) {
-            total += b.getCosto();
-        }
+        double total = 0.0;
+        for (Producto p : bebidas) total += p.precio();
         return total;
     }
 
-    public void mostrarPedido() {
-        System.out.println("\n🧾 Pedido #" + idPedido + " - Pago: " + metodoPago);
-        for (Bebida b : bebidas) {
-            System.out.println("• " + b.getDescripcion() + " → $" + b.getCosto());
-        }
-        System.out.println("💰 Total: $" + calcularTotal());
+    public void mostrarBebidas() {
+        System.out.println("Pedido #" + idPedido + " (" + metodoPago + ") - " + fecha);
+        for (Producto p : bebidas)
+            System.out.println("  • " + p.nombre() + " → $" + (int)p.precio());
+        System.out.println("  Total: $" + (int)calcularTotal());
+        System.out.println("-----------------------------------------");
     }
 }
