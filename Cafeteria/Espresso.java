@@ -1,12 +1,10 @@
 public class Espresso extends CafeBase {
     private String origen;
-    private String intensidad;
     private String metodoTostado;
 
     public Espresso(String tamano, String nivelTostado) {
         super("Espresso", 2500.0, tamano, nivelTostado);
         this.origen = "Colombia";
-        this.intensidad = "Alta";
         this.metodoTostado = "Oscuro";
     }
 
