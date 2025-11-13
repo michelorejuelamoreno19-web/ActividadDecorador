@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente implements Observer {
+
     private String nombre;
     private String correo;
     private String telefono;
@@ -15,7 +16,6 @@ public class Cliente implements Observer {
 
     public void agregarPedido(PedidoCafe pedido) {
         pedidos.add(pedido);
-        pedido.agregarObservador(this); // 👈 El cliente observa su pedido
         System.out.println("Pedido agregado para " + nombre);
     }
 
@@ -29,6 +29,6 @@ public class Cliente implements Observer {
 
     @Override
     public void actualizar(String mensaje) {
-        System.out.println("🔔 Notificación para " + nombre + ": " + mensaje);
+        System.out.println("🔔 Notificación para " + nombre + " (" + correo + "): " + mensaje);
     }
 }
