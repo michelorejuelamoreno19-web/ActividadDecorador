@@ -3,4 +3,3 @@ public interface Subject {
     void eliminarObservador(Observer o);
     void notificarObservadores(String mensaje);
 }
-

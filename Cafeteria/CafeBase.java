@@ -23,10 +23,6 @@ public abstract class CafeBase implements Producto {
 
     @Override
     public void preparar() {
-        System.out.println("Preparando " + nombre() + " base.");
-    }
-
-    public void servir() {
-        System.out.println("Sirviendo " + nombre());
+        System.out.println("Preparando base: " + nombre());
     }
 }

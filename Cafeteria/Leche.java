@@ -9,9 +9,6 @@ public class Leche extends DecoradorAdicional {
     @Override
     public void preparar() {
         super.preparar();
-        System.out.println("Añadiendo leche tipo: " + tipo);
-    }
-     public void servir() {
-        System.out.println("Sirviendo " + nombre());
+        System.out.println("Espumando la " + tipo + ".");
     }
 }

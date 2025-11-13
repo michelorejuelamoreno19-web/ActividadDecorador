@@ -11,7 +11,6 @@ public class MainCafeteria {
         b1 = new Leche(b1);
         b1 = new Crema(b1);
         p1.agregarBebida(b1);
-
         c1.agregarPedido(p1);
 
 
@@ -25,12 +24,10 @@ public class MainCafeteria {
         Producto b2 = new Latte("Grande", "Medio");
         b2 = new Chocolate(b2);
         p2.agregarBebida(b2);
-
         c2.agregarPedido(p2);
 
 
 
-        
         // ================================
         // CLIENTE 3
         // ================================
@@ -39,8 +36,8 @@ public class MainCafeteria {
         PedidoCafe p3 = new PedidoCafe(3, "Nequi");
         Producto b3 = new Capuccino("Pequeño", "Suave");
         b3 = new Leche(b3);
+        b3 = new Chocolate(b3);
         p3.agregarBebida(b3);
-
         c3.agregarPedido(p3);
 
 
@@ -52,13 +49,25 @@ public class MainCafeteria {
 
         PedidoCafe p4 = new PedidoCafe(4, "Efectivo");
         Producto b4 = new Latte("Mediano", "Fuerte");
-        b4 = new Crema(b4);
-        b4 = new Chocolate(b4);
+        b4 = new Crema(new Chocolate(b4));
         p4.agregarBebida(b4);
-
         c4.agregarPedido(p4);
 
 
+
+        // ================================
+        // PREPARAR PEDIDOS (se muestran notificaciones)
+        // ================================
+        System.out.println("\n--- COMIENZA LA PREPARACIÓN ---\n");
+
+        p1.prepararPedido();
+        System.out.println();
+        p2.prepararPedido();
+        System.out.println();
+        p3.prepararPedido();
+        System.out.println();
+        p4.prepararPedido();
+        System.out.println();
 
         // ================================
         // MOSTRAR HISTORIAL

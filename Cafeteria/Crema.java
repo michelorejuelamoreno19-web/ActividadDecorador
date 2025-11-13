@@ -11,7 +11,4 @@ public class Crema extends DecoradorAdicional {
         super.preparar();
         System.out.println("Añadiendo " + cucharadas + " cucharada(s) de crema.");
     }
-     public void servir() {
-        System.out.println("Sirviendo " + nombre());
-    }
 }

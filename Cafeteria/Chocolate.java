@@ -11,7 +11,4 @@ public class Chocolate extends DecoradorAdicional {
         super.preparar();
         System.out.println("Rallando chocolate (" + porcentajeCacao + "% cacao).");
     }
-     public void servir() {
-        System.out.println("Sirviendo " + nombre());
-    }
 }

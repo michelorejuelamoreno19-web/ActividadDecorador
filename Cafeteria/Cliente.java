@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente implements Observer {
-
     private String nombre;
     private String correo;
     private String telefono;
@@ -16,19 +15,21 @@ public class Cliente implements Observer {
 
     public void agregarPedido(PedidoCafe pedido) {
         pedidos.add(pedido);
-        System.out.println("Pedido agregado para " + nombre);
+        // El cliente se suscribe a su pedido para recibir notificaciones
+        pedido.agregarObservador(this);
+        System.out.println("✅ Pedido agregado para " + nombre + " (Pedido #" + pedido.getIdPedido() + ")");
     }
 
     public void mostrarHistorial() {
-        System.out.println("\nHistorial de " + nombre + ":");
+        System.out.println("\n=== Historial de " + nombre + " (" + correo + ") ===");
         for (PedidoCafe p : pedidos) {
             p.mostrarBebidas();
-            System.out.println("  Total: $" + (int)p.calcularTotal());
         }
     }
 
     @Override
     public void actualizar(String mensaje) {
-        System.out.println("🔔 Notificación para " + nombre + " (" + correo + "): " + mensaje);
+        // Aquí se imprime la notificación recibida
+        System.out.println("🔔 Notificación para " + nombre + ": " + mensaje);
     }
 }

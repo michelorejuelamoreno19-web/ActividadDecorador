@@ -23,6 +23,7 @@ public abstract class DecoradorAdicional implements Producto {
 
     @Override
     public void preparar() {
+        // Delegar la preparación a la bebida envuelta
         bebida.preparar();
         if (activo) {
             System.out.println("Agregando adicional: " + nombreDecorador + " ($" + (int)costoExtra + ")");
@@ -31,5 +32,22 @@ public abstract class DecoradorAdicional implements Producto {
 
     public void activarDecorador(boolean estado) {
         this.activo = estado;
+    }
+
+    // getters útiles para inspección desde PedidoCafe
+    public String getNombreDecorador() {
+        return nombreDecorador;
+    }
+
+    public Producto getBebidaEnvuelta() {
+        return bebida;
+    }
+
+    public double getCostoExtra() {
+        return costoExtra;
+    }
+
+    public boolean isActivo() {
+        return activo;
     }
 }
